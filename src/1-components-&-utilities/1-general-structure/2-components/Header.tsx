@@ -5,13 +5,14 @@ import { useState } from 'react'
 const navigationLinks = [
   { path: '/page1', label: 'Page 1' },
   { path: '/page2', label: 'Page 2' },
+  { path: '/settings', label: 'Settings' }
+
 ]
 
 /*
 
 { path: '/view-data', label: 'View Data' },
 { path: '/upload', label: 'Upload Data' },
-{ path: '/settings', label: 'Settings' },
 
 
 */
@@ -33,7 +34,7 @@ const Header = () => {
       <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
 
         <Link to="/" className="text-2xl font-bold text-neutral-800 dark:text-neutral-50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">
-          My Website
+          Timer Site
         </Link>
 
         <nav className="hidden md:flex space-x-3">
