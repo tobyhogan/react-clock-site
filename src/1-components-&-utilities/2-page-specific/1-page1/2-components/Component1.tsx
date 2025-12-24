@@ -157,33 +157,7 @@ const Clock = () => {
       </div>
 
       {/* Controls Section */}
-      <div className="flex flex-col md:flex-row items-center gap-6">
-        {/* Time Server Dropdown */}
-        <div className="flex flex-col items-center gap-2">
-          <label htmlFor="server-select" className="text-sm font-medium dark:text-white">
-            Time Server:
-          </label>
-          <select
-            id="server-select"
-            value={selectedServer.name}
-            onChange={(e) => {
-              const server = timeServers.find((s) => s.name === e.target.value);
-              if (server) setSelectedServer(server);
-            }}
-            className="px-6 py-3 rounded-lg font-medium bg-gray-100 dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-[250px]"
-          >
-            {timeServers.map((server) => (
-              <option key={server.name} value={server.name}>
-                {server.displayName}
-              </option>
-            ))}
-          </select>
-          
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 text-center max-w-[250px]">
-            {selectedServer.description}
-          </p>
-        </div>
-
+      <div className="flex flex-col items-center gap-6">
         {/* Timezone Dropdown */}
         <div className="flex flex-col items-center gap-2">
           <label htmlFor="timezone-select" className="text-sm font-medium dark:text-white">
@@ -207,6 +181,32 @@ const Clock = () => {
           
           <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 text-center max-w-[250px]">
             Display time in this timezone
+          </p>
+        </div>
+
+        {/* Time Server Dropdown */}
+        <div className="flex flex-col items-center gap-2">
+          <label htmlFor="server-select" className="text-sm font-medium dark:text-white">
+            Time Server:
+          </label>
+          <select
+            id="server-select"
+            value={selectedServer.name}
+            onChange={(e) => {
+              const server = timeServers.find((s) => s.name === e.target.value);
+              if (server) setSelectedServer(server);
+            }}
+            className="px-6 py-3 rounded-lg font-medium bg-gray-100 dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-[250px]"
+          >
+            {timeServers.map((server) => (
+              <option key={server.name} value={server.name}>
+                {server.displayName}
+              </option>
+            ))}
+          </select>
+          
+          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 text-center max-w-[250px]">
+            {selectedServer.description}
           </p>
         </div>
       </div>
