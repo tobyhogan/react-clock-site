@@ -34,7 +34,7 @@ const Header = () => {
       <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
 
         <Link to="/" className="text-2xl font-bold text-neutral-800 dark:text-neutral-50 hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap">
-          Timer Site
+          Clock Site
         </Link>
 
         <nav className="hidden md:flex space-x-3">
