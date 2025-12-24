@@ -150,7 +150,7 @@ const Clock = () => {
             {loading && <span className="ml-2">(Loading...)</span>}
           </p>
 
-          <div className="text-center text-7xl font-medium dark:text-white">
+          <div className="text-center text-7xl font-medium dark:text-white tabular-nums">
             {displayTime}
           </div>
 
