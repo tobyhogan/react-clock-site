@@ -16,6 +16,12 @@ interface Timezone {
 
 const timeServers: TimeServer[] = [
   { 
+    name: 'browser', 
+    displayName: 'Browser Time',
+    endpoint: 'browser',
+    description: 'Local system time'
+  },
+  { 
     name: 'worldtimeapi', 
     displayName: 'WorldTimeAPI',
     endpoint: 'https://worldtimeapi.org/api/ip',
@@ -67,8 +73,8 @@ const Clock = () => {
   // Fetch time from selected server
   useEffect(() => {
     const fetchServerTime = async () => {
-      if (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') {
-        // For NTP servers, we'll use local time with a note
+      if (selectedServer.endpoint === 'browser' || selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') {
+        // For browser time and NTP servers, use local time
         // (NTP protocol requires UDP which isn't available in browsers)
         setServerTime(new Date());
         setError(null);
@@ -147,7 +153,7 @@ const Clock = () => {
             </p>
           )}
 
-          {(selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
+          {selectedServer.endpoint !== 'browser' && (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
             <p className="text-xs text-gray-500 dark:text-gray-500 mt-4">
               Note: NTP requires UDP protocol. Showing browser time.
             </p>
