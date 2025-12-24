@@ -73,8 +73,15 @@ const Clock = () => {
   // Fetch time from selected server
   useEffect(() => {
     const fetchServerTime = async () => {
-      if (selectedServer.endpoint === 'browser' || selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') {
-        // For browser time and NTP servers, use local time
+      if (selectedServer.endpoint === 'browser') {
+        // For browser time, don't set serverTime so it uses currentTime which updates every second
+        setServerTime(null);
+        setError(null);
+        return;
+      }
+      
+      if (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') {
+        // For NTP servers, use local time
         // (NTP protocol requires UDP which isn't available in browsers)
         setServerTime(new Date());
         setError(null);
