@@ -4,12 +4,13 @@ interface TimeServer {
   name: string;
   city: string;
   timezone: string;
+  utcOffset: string;
 }
 
 const timeServers: TimeServer[] = [
-  { name: 'London', city: 'London', timezone: 'Europe/London' },
-  { name: 'Berlin', city: 'Berlin', timezone: 'Europe/Berlin' },
-  { name: 'Sydney', city: 'Sydney', timezone: 'Australia/Sydney' },
+  { name: 'London', city: 'London', timezone: 'Europe/London', utcOffset: 'UTC+0' },
+  { name: 'Berlin', city: 'Berlin', timezone: 'Europe/Berlin', utcOffset: 'UTC+1' },
+  { name: 'Sydney', city: 'Sydney', timezone: 'Australia/Sydney', utcOffset: 'UTC+11' },
 ];
 
 const Clock = () => {
@@ -39,29 +40,40 @@ const Clock = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
-      <div className="text-center">
-        <h2 className="text-2xl font-semibold mb-2 dark:text-white">
-          {selectedServer.city}
-        </h2>
-        <div className="text-7xl font-bold font-mono dark:text-white">
-          {displayTime}
+      {/* Raised Clock Widget */}
+      <div className="bg-white dark:bg-gray-800 border-2 border-black rounded-2xl p-12 min-w-[400px]">
+
+        <div className="text-center">
+
+          <h2 className="text-3xl font-semibold mb-6 dark:text-white">
+            {selectedServer.city}
+          </h2>
+          <div className="text-7xl font-bold font-mono dark:text-white">
+            {displayTime}
+          </div>
         </div>
       </div>
 
-      <div className="flex gap-4">
-        {timeServers.map((server) => (
-          <button
-            key={server.name}
-            onClick={() => setSelectedServer(server)}
-            className={`px-6 py-3 rounded-lg font-medium transition-all ${
-              selectedServer.name === server.name
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 dark:bg-gray-700 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
-          >
-            {server.city}
-          </button>
-        ))}
+      {/* Location Dropdown */}
+      <div className="flex flex-col items-center gap-2">
+        <label htmlFor="timezone-select" className="text-sm font-medium dark:text-white">
+          Select Location:
+        </label>
+        <select
+          id="timezone-select"
+          value={selectedServer.name}
+          onChange={(e) => {
+            const server = timeServers.find((s) => s.name === e.target.value);
+            if (server) setSelectedServer(server);
+          }}
+          className="px-6 py-3 rounded-lg font-medium bg-gray-100 dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-[300px]"
+        >
+          {timeServers.map((server) => (
+            <option key={server.name} value={server.name}>
+              {server.city} ({server.utcOffset})
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );
