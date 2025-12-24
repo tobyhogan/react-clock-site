@@ -5,10 +5,16 @@ import { useState } from 'react'
 const navigationLinks = [
   { path: '/page1', label: 'Page 1' },
   { path: '/page2', label: 'Page 2' },
-  { path: '/view-data', label: 'View Data' },
-  { path: '/upload', label: 'Upload Data' },
-  { path: '/settings', label: 'Settings' },
 ]
+
+/*
+
+{ path: '/view-data', label: 'View Data' },
+{ path: '/upload', label: 'Upload Data' },
+{ path: '/settings', label: 'Settings' },
+
+
+*/
 
 const Header = () => {
   const location = useLocation()
