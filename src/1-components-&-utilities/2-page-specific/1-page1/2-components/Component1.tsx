@@ -41,16 +41,20 @@ const Clock = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
       {/* Raised Clock Widget */}
-      <div className="bg-white dark:bg-gray-800 border-2 border-black rounded-2xl p-12 min-w-[400px]">
+      <div className="bg-white dark:bg-gray-800 border-2 border-gray-600 rounded-2xl p-12 min-w-[400px] pt-12 pb-16">
 
         <div className="text-center">
 
           <h2 className="text-3xl font-semibold mb-6 dark:text-white">
             {selectedServer.city}
           </h2>
-          <div className="text-7xl font-bold font-mono dark:text-white">
+
+
+          <div className="text-center text-7xl font-medium dark:text-white">
             {displayTime}
           </div>
+
+
         </div>
       </div>
 
