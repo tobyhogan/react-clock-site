@@ -3,28 +3,56 @@ import { useState, useEffect } from 'react';
 interface TimeServer {
   name: string;
   displayName: string;
-  endpoint: string;
+  endpoint?: string;
+  timezone?: string;
   description: string;
+  type: 'api' | 'timezone';
 }
 
 const timeServers: TimeServer[] = [
+  // Cities/Timezones
+  { 
+    name: 'london', 
+    displayName: 'London',
+    timezone: 'Europe/London',
+    description: 'UTC+0',
+    type: 'timezone'
+  },
+  { 
+    name: 'berlin', 
+    displayName: 'Berlin',
+    timezone: 'Europe/Berlin',
+    description: 'UTC+1',
+    type: 'timezone'
+  },
+  { 
+    name: 'sydney', 
+    displayName: 'Sydney',
+    timezone: 'Australia/Sydney',
+    description: 'UTC+11',
+    type: 'timezone'
+  },
+  // Time Server APIs
   { 
     name: 'worldtimeapi', 
     displayName: 'WorldTimeAPI',
     endpoint: 'https://worldtimeapi.org/api/ip',
-    description: 'Open-source time API'
+    description: 'Open-source time API',
+    type: 'api'
   },
   { 
     name: 'google', 
     displayName: 'Google NTP',
     endpoint: 'google',
-    description: 'Google Public NTP (time.google.com)'
+    description: 'Google Public NTP (time.google.com)',
+    type: 'api'
   },
   { 
     name: 'cloudflare', 
     displayName: 'Cloudflare NTP',
     endpoint: 'cloudflare',
-    description: 'Cloudflare NTP (time.cloudflare.com)'
+    description: 'Cloudflare NTP (time.cloudflare.com)',
+    type: 'api'
   },
 ];
 
@@ -35,9 +63,17 @@ const Clock = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch time from selected server
+  // Fetch time from selected server (for API types only)
   useEffect(() => {
     const fetchServerTime = async () => {
+      // For timezone type, we don't need to fetch anything
+      if (selectedServer.type === 'timezone') {
+        setServerTime(null);
+        setError(null);
+        setLoading(false);
+        return;
+      }
+
       if (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') {
         // For NTP servers, we'll use local time with a note
         // (NTP protocol requires UDP which isn't available in browsers)
@@ -50,7 +86,7 @@ const Clock = () => {
       setError(null);
       
       try {
-        const response = await fetch(selectedServer.endpoint);
+        const response = await fetch(selectedServer.endpoint!);
         if (!response.ok) throw new Error('Failed to fetch time');
         
         const data = await response.json();
@@ -79,8 +115,9 @@ const Clock = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const formatTime = (date: Date) => {
+  const formatTime = (date: Date, timezone?: string) => {
     const formatter = new Intl.DateTimeFormat('en-GB', {
+      timeZone: timezone,
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
@@ -89,7 +126,9 @@ const Clock = () => {
     return formatter.format(date);
   };
 
-  const displayTime = formatTime(serverTime || currentTime);
+  const displayTime = selectedServer.type === 'timezone' 
+    ? formatTime(currentTime, selectedServer.timezone)
+    : formatTime(serverTime || currentTime);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
@@ -111,13 +150,13 @@ const Clock = () => {
             {displayTime}
           </div>
 
-          {error && (
+          {error && selectedServer.type === 'api' && (
             <p className="text-sm text-red-500 mt-4">
               {error} - Showing local time
             </p>
           )}
 
-          {(selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
+          {selectedServer.type === 'api' && (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
             <p className="text-xs text-gray-500 dark:text-gray-500 mt-4">
               Note: NTP requires UDP protocol. Showing browser time.
             </p>
