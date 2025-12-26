@@ -137,7 +137,7 @@ const Clock = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
       {/* Raised Clock Widget */}
-      <div className="bg-white dark:bg-gray-800 border-2 border-gray-600 rounded-2xl p-12 min-w-[400px] pt-12 pb-16">
+      <div className="bg-white dark:bg-neutral-800 border-2 border-gray-600 rounded-2xl p-12 min-w-[400px] pt-12 pb-16">
 
         <div className="text-center">
 
@@ -183,7 +183,7 @@ const Clock = () => {
               const tz = timezones.find((t) => t.name === e.target.value);
               if (tz) setSelectedTimezone(tz);
             }}
-            className="px-6 py-3 rounded-lg font-medium bg-gray-100 dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-[250px]"
+            className="px-6 py-3 rounded-lg font-medium bg-neutral-100 dark:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 dark:focus:ring-neutral-400 cursor-pointer min-w-[250px]"
           >
             {timezones.map((tz) => (
               <option key={tz.name} value={tz.name}>
@@ -192,7 +192,7 @@ const Clock = () => {
             ))}
           </select>
           
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 text-center max-w-[250px]">
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1 text-center max-w-[250px]">
             Display time in this timezone
           </p>
         </div>
@@ -209,7 +209,7 @@ const Clock = () => {
               const server = timeServers.find((s) => s.name === e.target.value);
               if (server) setSelectedServer(server);
             }}
-            className="px-6 py-3 rounded-lg font-medium bg-gray-100 dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-[250px]"
+            className="px-6 py-3 rounded-lg font-medium bg-neutral-100 dark:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 dark:focus:ring-neutral-400 cursor-pointer min-w-[250px]"
           >
             {timeServers.map((server) => (
               <option key={server.name} value={server.name}>
@@ -218,7 +218,7 @@ const Clock = () => {
             ))}
           </select>
           
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 text-center max-w-[250px]">
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1 text-center max-w-[250px]">
             {selectedServer.description}
           </p>
         </div>
