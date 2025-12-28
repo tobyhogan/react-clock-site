@@ -7,8 +7,8 @@ import ReactClockComponent from '../1-components-&-utilities/2-page-specific/1-p
 const Page1 = () => {
   const [showDigitalClock, setShowDigitalClock] = useState(true);
   const [showAnalogClock, setShowAnalogClock] = useState(true);
-  const [analogClockSize, setAnalogClockSize] = useState(200);
-  const [digitalClockSize, setDigitalClockSize] = useState(7); // Text size in rem units
+  const [analogClockSize, setAnalogClockSize] = useState(100); // Percentage
+  const [digitalClockSize, setDigitalClockSize] = useState(100); // Percentage
 
   return (
     <>
@@ -62,11 +62,11 @@ const Page1 = () => {
 
       {/* Center Content - Clocks */}
       <div className="flex-col mx-8">
-        <ReactClockComponent showClock={showAnalogClock} size={analogClockSize} />
+        <ReactClockComponent showClock={showAnalogClock} size={analogClockSize * 2} />
 
         <div className='mt-12' ></div>
 
-        <Clock showClock={showDigitalClock} textSize={digitalClockSize} />
+        <Clock showClock={showDigitalClock} textSize={digitalClockSize * 0.07} />
       </div>
 
       {/* Right Panel - Checkboxes */}
@@ -88,24 +88,24 @@ const Page1 = () => {
             </label>
             
             <div className="ml-6 flex flex-col gap-1">
-              <span className="text-xs text-neutral-600 dark:text-neutral-400">Size: {analogClockSize}px</span>
+              <span className="text-xs text-neutral-600 dark:text-neutral-400">Size: {analogClockSize}%</span>
               <div className="flex gap-2">
                 <button
-                  onClick={() => setAnalogClockSize(prev => Math.max(100, prev - 20))}
+                  onClick={() => setAnalogClockSize(prev => Math.max(50, prev - 10))}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Decrease size"
                 >
                   −
                 </button>
                 <button
-                  onClick={() => setAnalogClockSize(200)}
+                  onClick={() => setAnalogClockSize(100)}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Reset to default"
                 >
                   Reset
                 </button>
                 <button
-                  onClick={() => setAnalogClockSize(prev => Math.min(400, prev + 20))}
+                  onClick={() => setAnalogClockSize(prev => Math.min(200, prev + 10))}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Increase size"
                 >
@@ -127,24 +127,24 @@ const Page1 = () => {
             </label>
             
             <div className="ml-6 flex flex-col gap-1">
-              <span className="text-xs text-neutral-600 dark:text-neutral-400">Size: {digitalClockSize}</span>
+              <span className="text-xs text-neutral-600 dark:text-neutral-400">Size: {digitalClockSize}%</span>
               <div className="flex gap-2">
                 <button
-                  onClick={() => setDigitalClockSize(prev => Math.max(3, prev - 1))}
+                  onClick={() => setDigitalClockSize(prev => Math.max(50, prev - 10))}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Decrease size"
                 >
                   −
                 </button>
                 <button
-                  onClick={() => setDigitalClockSize(7)}
+                  onClick={() => setDigitalClockSize(100)}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Reset to default"
                 >
                   Reset
                 </button>
                 <button
-                  onClick={() => setDigitalClockSize(prev => Math.min(12, prev + 1))}
+                  onClick={() => setDigitalClockSize(prev => Math.min(200, prev + 10))}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Increase size"
                 >
