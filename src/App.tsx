@@ -16,8 +16,9 @@ function App() {
           v7_relativeSplatPath: true
         }}
       >
-        <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 transition-colors">
+        <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 transition-colors overflow-x-hidden">
           <Header />
+          <main className="pb-8">
             <Routes>
 
               <Route path="/" element={<Navigate to="/page1" replace />} />
@@ -29,6 +30,7 @@ function App() {
               <Route path="/settings" element={<Settings />} />
 
             </Routes>
+          </main>
         </div>
       </Router>
     </ThemeProvider>

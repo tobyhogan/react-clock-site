@@ -15,20 +15,20 @@ const Settings = () => {
   ] as const
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-neutral-900 dark:text-neutral-50">
+    <div className="container mx-auto px-4 py-6 md:py-8 max-w-4xl">
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-neutral-900 dark:text-neutral-50">
         Settings
       </h1>
 
-      <div className="bg-white dark:bg-neutral-800 rounded-lg shadow-md p-6">
+      <div className="bg-white dark:bg-neutral-800 rounded-lg shadow-md p-4 md:p-6">
         <div className="space-y-6">
 
           <div>
-            <h2 className="text-xl font-semibold mb-4 text-neutral-800 dark:text-neutral-100">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 text-neutral-800 dark:text-neutral-100">
               Appearance
             </h2>
             
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="font-medium text-neutral-900 dark:text-neutral-50">
                   Theme
@@ -40,7 +40,7 @@ const Settings = () => {
 
               <button
                 onClick={toggleTheme}
-                className={`relative inline-flex items-center h-8 w-14 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500 dark:focus:ring-offset-neutral-800 ${
+                className={`relative inline-flex items-center h-10 w-16 sm:h-8 sm:w-14 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500 dark:focus:ring-offset-neutral-800 touch-manipulation ${
                   theme === 'dark'
                     ? 'bg-neutral-600'
                     : 'bg-neutral-300'
@@ -48,8 +48,8 @@ const Settings = () => {
                 aria-label="Toggle theme"
               >
                 <span
-                  className={`inline-block h-6 w-6 transform rounded-full bg-white shadow-lg transition-transform ${
-                    theme === 'dark' ? 'translate-x-7' : 'translate-x-1'
+                  className={`inline-block h-8 w-8 sm:h-6 sm:w-6 transform rounded-full bg-white shadow-lg transition-transform ${
+                    theme === 'dark' ? 'translate-x-7 sm:translate-x-7' : 'translate-x-1'
                   }`}
                 />
               </button>
@@ -61,11 +61,11 @@ const Settings = () => {
           </div>
 
           <div className="border-t border-neutral-200 dark:border-neutral-700 pt-6">
-            <h2 className="text-xl font-semibold mb-4 text-neutral-800 dark:text-neutral-100">
+            <h2 className="text-lg md:text-xl font-semibold mb-4 text-neutral-800 dark:text-neutral-100">
               Display
             </h2>
             
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="font-medium text-neutral-900 dark:text-neutral-50">
                   UI Scale
@@ -78,7 +78,7 @@ const Settings = () => {
               <select
                 value={uiScale}
                 onChange={(e) => setUIScale(e.target.value as '150' | '133' | '100' | '90' |'80' | '75')}
-                className="px-4 py-2 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-500 dark:focus:ring-neutral-400 cursor-pointer"
+                className="px-4 py-3 rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-500 dark:focus:ring-neutral-400 cursor-pointer w-full sm:w-auto touch-manipulation"
               >
                 {scaleOptions.map((option) => (
                   <option key={option.value} value={option.value}>

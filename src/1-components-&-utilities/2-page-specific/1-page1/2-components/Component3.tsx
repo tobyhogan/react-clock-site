@@ -9,6 +9,13 @@ interface ReactClockComponentProps {
 
 const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps) => {
   const [value, setValue] = useState(new Date());
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  
+  // Calculate responsive size
+  const getResponsiveSize = () => {
+    const maxWidth = windowWidth < 768 ? windowWidth * 0.7 : size;
+    return Math.min(size, maxWidth);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => setValue(new Date()), 1000);
@@ -17,6 +24,12 @@ const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps
       clearInterval(interval);
     };
   }, []);
+  
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   /*
   <h2 className="text-lg font-semibold mb-3 dark:text-white text-center">React Clock Package</h2>
@@ -24,14 +37,14 @@ const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps
   */
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
-        <div className="flex justify-center" style={{ width: size + 16, height: size + 16 }}>
+    <div className="flex flex-col items-center justify-center w-full">
+      <div className="bg-neutral-100 dark:bg-neutral-800 p-4 md:p-6 rounded-lg max-w-full">
+        <div className="flex justify-center items-center" style={{ maxWidth: '100%' }}>
           {showClock && (
-            <div className="bg-white rounded-full p-2 inline-block">
+            <div className="bg-white rounded-full p-2 inline-flex items-center justify-center" style={{ maxWidth: '100%' }}>
               <Clock 
                 value={value} 
-                size={size} 
+                size={getResponsiveSize()} 
                 renderNumbers={true}
                 hourHandWidth={4}
                 minuteHandWidth={3}

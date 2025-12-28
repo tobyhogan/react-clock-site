@@ -6,10 +6,10 @@ const Page2 = () => {
 
 
 
-    <div className="">
+    <div className="container mx-auto px-4 py-6 md:py-8">
 
 
-      <p className="text-[22px] dark:text-white">Page 2</p>
+      <p className="text-lg md:text-[22px] dark:text-white">Page 2</p>
 
 
 
