@@ -30,13 +30,19 @@ const Page1 = () => {
 
         <h3 className="text-lg font-semibold mb-4 dark:text-white">Controls</h3>
         
-        <div className="flex flex-col gap-3">
+        <div className="
+
+          flex flex-col gap-3
+          [&_input[type='checkbox']]:accent-gray-400 [&_input[type='checkbox']]:w-4
+          [&_input[type='checkbox']]:h-4 [&_input[type='checkbox']]:cursor-pointer
+
+        ">
+
           <label className="flex items-center gap-2 cursor-pointer">
             <input
               type="checkbox"
               checked={showAnalogClock}
               onChange={(e) => setShowAnalogClock(e.target.checked)}
-              className="w-4 h-4 cursor-pointer accent-gray-400"
             />
             <span className="text-sm font-medium dark:text-white">Show Analog Clock</span>
           </label>
@@ -46,7 +52,6 @@ const Page1 = () => {
               type="checkbox"
               checked={showDigitalClock}
               onChange={(e) => setShowDigitalClock(e.target.checked)}
-              className="w-4 h-4 cursor-pointer accent-gray-400"
             />
             <span className="text-sm font-medium dark:text-white">Show Digital Clock</span>
           </label>
