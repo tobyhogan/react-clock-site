@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import Clock from 'react-clock';
 import 'react-clock/dist/Clock.css';
 
-const ReactClockComponent = () => {
+interface ReactClockComponentProps {
+  showClock: boolean;
+}
+
+const ReactClockComponent = ({ showClock }: ReactClockComponentProps) => {
   const [value, setValue] = useState(new Date());
 
   useEffect(() => {
@@ -22,16 +26,18 @@ const ReactClockComponent = () => {
     <div className="flex flex-col items-center justify-center">
       <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
         <div className="flex justify-center">
-          <div className="bg-white rounded-full p-2 inline-block">
-            <Clock 
-              value={value} 
-              size={200} 
-              renderNumbers={true}
-              hourHandWidth={4}
-              minuteHandWidth={3}
-              secondHandWidth={3}
-            />
-          </div>
+          {showClock && (
+            <div className="bg-white rounded-full p-2 inline-block">
+              <Clock 
+                value={value} 
+                size={200} 
+                renderNumbers={true}
+                hourHandWidth={4}
+                minuteHandWidth={3}
+                secondHandWidth={3}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

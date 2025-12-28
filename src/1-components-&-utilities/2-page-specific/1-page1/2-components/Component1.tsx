@@ -62,15 +62,17 @@ const timezones: Timezone[] = [
   },
 ];
 
-const Clock = () => {
+interface ClockProps {
+  showClock: boolean;
+}
+
+const Clock = ({ showClock }: ClockProps) => {
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
   const [selectedServer, setSelectedServer] = useState<TimeServer>(timeServers[0]);
   const [selectedTimezone, setSelectedTimezone] = useState<Timezone>(timezones[0]);
   const [serverTime, setServerTime] = useState<Date | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [showClock, setShowClock] = useState<boolean>(true);
-  const [showNumbers, setShowNumbers] = useState<boolean>(true);
 
   // Fetch time from selected server
   useEffect(() => {
@@ -138,29 +140,6 @@ const Clock = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-8">
-      {/* Checkboxes */}
-      <div className="flex gap-6">
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={showClock}
-            onChange={(e) => setShowClock(e.target.checked)}
-            className="w-4 h-4 cursor-pointer"
-          />
-          <span className="text-sm font-medium dark:text-white">Show Clock</span>
-        </label>
-        
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={showNumbers}
-            onChange={(e) => setShowNumbers(e.target.checked)}
-            className="w-4 h-4 cursor-pointer"
-          />
-          <span className="text-sm font-medium dark:text-white">Show Numbers</span>
-        </label>
-      </div>
-
       {/* Raised Clock Widget */}
       <div className="bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-2xl p-12 min-w-[400px] pt-12 pb-16">
 
@@ -177,7 +156,7 @@ const Clock = () => {
             </p>
 
             <div className="text-center text-7xl font-medium dark:text-white tabular-nums">
-              {showNumbers ? displayTime : '\u00A0'}
+              {displayTime}
             </div>
 
             {error && (
