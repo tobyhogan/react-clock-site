@@ -69,6 +69,8 @@ const Clock = () => {
   const [serverTime, setServerTime] = useState<Date | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [showClock, setShowClock] = useState<boolean>(true);
+  const [showNumbers, setShowNumbers] = useState<boolean>(true);
 
   // Fetch time from selected server
   useEffect(() => {
@@ -136,37 +138,62 @@ const Clock = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-8">
+      {/* Checkboxes */}
+      <div className="flex gap-6">
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={showClock}
+            onChange={(e) => setShowClock(e.target.checked)}
+            className="w-4 h-4 cursor-pointer"
+          />
+          <span className="text-sm font-medium dark:text-white">Show Clock</span>
+        </label>
+        
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={showNumbers}
+            onChange={(e) => setShowNumbers(e.target.checked)}
+            className="w-4 h-4 cursor-pointer"
+          />
+          <span className="text-sm font-medium dark:text-white">Show Numbers</span>
+        </label>
+      </div>
+
       {/* Raised Clock Widget */}
       <div className="bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-2xl p-12 min-w-[400px] pt-12 pb-16">
 
-        <div className="text-center">
+        {showClock && (
+          <div className="text-center">
 
-          <h2 className="text-3xl font-semibold mb-2 dark:text-white">
-            {selectedTimezone.displayName}
-          </h2>
-          
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-            {selectedTimezone.utcOffset}
-            {loading && <span className="ml-2">(Loading...)</span>}
-          </p>
+            <h2 className="text-3xl font-semibold mb-2 dark:text-white">
+              {selectedTimezone.displayName}
+            </h2>
+            
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              {selectedTimezone.utcOffset}
+              {loading && <span className="ml-2">(Loading...)</span>}
+            </p>
 
-          <div className="text-center text-7xl font-medium dark:text-white tabular-nums">
-            {displayTime}
+            <div className="text-center text-7xl font-medium dark:text-white tabular-nums">
+              {showNumbers ? displayTime : '\u00A0'}
+            </div>
+
+            {error && (
+              <p className="text-sm text-red-500 mt-4">
+                {error} - Showing local time
+              </p>
+            )}
+
+            {selectedServer.endpoint !== 'browser' && (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
+              <p className="text-xs text-gray-500 dark:text-gray-500 mt-4">
+                Note: NTP requires UDP protocol. Showing browser time.
+              </p>
+            )}
+
           </div>
-
-          {error && (
-            <p className="text-sm text-red-500 mt-4">
-              {error} - Showing local time
-            </p>
-          )}
-
-          {selectedServer.endpoint !== 'browser' && (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
-            <p className="text-xs text-gray-500 dark:text-gray-500 mt-4">
-              Note: NTP requires UDP protocol. Showing browser time.
-            </p>
-          )}
-
-        </div>
+        )}
       </div>
 
       {/* Controls Section */}
