@@ -27,8 +27,8 @@ const ReactClockComponent = () => {
               value={value} 
               size={200} 
               renderNumbers={true}
-              hourHandWidth={5}
-              minuteHandWidth={4}
+              hourHandWidth={4}
+              minuteHandWidth={3}
               secondHandWidth={3}
             />
           </div>
