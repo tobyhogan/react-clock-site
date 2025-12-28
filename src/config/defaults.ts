@@ -19,9 +19,9 @@ export const DEFAULT_SHOW_DIGITAL_CLOCK: boolean = true;
 
 export const DEFAULT_SHOW_ANALOG_CLOCK: boolean = true;
 
-export const DEFAULT_ANALOG_CLOCK_SIZE: number = 100; // Percentage
+export const DEFAULT_ANALOG_CLOCK_SIZE: number = 110; // Percentage
 
-export const DEFAULT_DIGITAL_CLOCK_SIZE: number = 100; // Percentage
+export const DEFAULT_DIGITAL_CLOCK_SIZE: number = 80; // Percentage
 
 
 
