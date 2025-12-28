@@ -143,36 +143,36 @@ const Clock = ({ showClock }: ClockProps) => {
       {/* Raised Clock Widget */}
       <div className="bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-2xl p-12 min-w-[400px] pt-12 pb-16">
 
-        {showClock && (
-          <div className="text-center">
-
-            <h2 className="text-3xl font-semibold mb-2 dark:text-white">
-              {selectedTimezone.displayName}
-            </h2>
-            
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              {selectedTimezone.utcOffset}
-              {loading && <span className="ml-2">(Loading...)</span>}
-            </p>
-
-            <div className="text-center text-7xl font-medium dark:text-white tabular-nums">
-              {displayTime}
-            </div>
-
-            {error && (
-              <p className="text-sm text-red-500 mt-4">
-                {error} - Showing local time
+        <div className="text-center" style={{ minHeight: '200px' }}>
+          {showClock && (
+            <>
+              <h2 className="text-3xl font-semibold mb-2 dark:text-white">
+                {selectedTimezone.displayName}
+              </h2>
+              
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                {selectedTimezone.utcOffset}
+                {loading && <span className="ml-2">(Loading...)</span>}
               </p>
-            )}
 
-            {selectedServer.endpoint !== 'browser' && (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
-              <p className="text-xs text-gray-500 dark:text-gray-500 mt-4">
-                Note: NTP requires UDP protocol. Showing browser time.
-              </p>
-            )}
+              <div className="text-center text-7xl font-medium dark:text-white tabular-nums">
+                {displayTime}
+              </div>
 
-          </div>
-        )}
+              {error && (
+                <p className="text-sm text-red-500 mt-4">
+                  {error} - Showing local time
+                </p>
+              )}
+
+              {selectedServer.endpoint !== 'browser' && (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
+                <p className="text-xs text-gray-500 dark:text-gray-500 mt-4">
+                  Note: NTP requires UDP protocol. Showing browser time.
+                </p>
+              )}
+            </>
+          )}
+        </div>
       </div>
 
       {/* Controls Section */}
