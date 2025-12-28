@@ -189,7 +189,7 @@ const Page1 = () => {
               <span className="text-xs md:text-sm text-neutral-600 dark:text-neutral-400">Size: {digitalClockSize}%</span>
               <div className="flex gap-2">
                 <button
-                  onClick={() => setDigitalClockSize(prev => Math.max(50, prev - 10))}
+                  onClick={() => setDigitalClockSize(prev => Math.max(20, prev - 10))}
                   className="flex-1 sm:flex-none px-3 md:px-4 py-2 md:py-1 text-sm md:text-base bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors touch-manipulation"
                   title="Decrease size"
                 >
