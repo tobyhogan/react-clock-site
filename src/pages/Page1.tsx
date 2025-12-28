@@ -43,7 +43,7 @@ const Page1 = () => {
         }
         
         .custom-checkbox input[type='checkbox']:checked:hover {
-          background-color: #6b7280;
+          background-color: #898f99;
 
         }
 
