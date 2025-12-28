@@ -23,7 +23,14 @@ const ReactClockComponent = () => {
       <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
         <div className="flex justify-center">
           <div className="bg-white rounded-full p-2 inline-block">
-            <Clock value={value} size={200} renderNumbers={true} />
+            <Clock 
+              value={value} 
+              size={200} 
+              renderNumbers={true}
+              hourHandWidth={5}
+              minuteHandWidth={4}
+              secondHandWidth={3}
+            />
           </div>
         </div>
       </div>
