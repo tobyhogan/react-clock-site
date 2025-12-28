@@ -8,6 +8,16 @@ const Page1 = () => {
     <div className="container mx-auto px-4 py-8">
 
 
+
+      <ReactClockComponent />
+
+
+
+      <div className='mt-12' ></div>
+
+
+
+
       <Clock />
       
 
@@ -20,7 +30,6 @@ const Page1 = () => {
 
 
 
-      <ReactClockComponent />
 
 
     </div>

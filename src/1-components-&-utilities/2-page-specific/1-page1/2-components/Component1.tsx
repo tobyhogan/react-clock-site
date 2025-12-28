@@ -135,7 +135,7 @@ const Clock = () => {
   const displayTime = formatTime(serverTime || currentTime, selectedTimezone.timezone);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
+    <div className="flex flex-col items-center justify-center gap-8">
       {/* Raised Clock Widget */}
       <div className="bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-2xl p-12 min-w-[400px] pt-12 pb-16">
 

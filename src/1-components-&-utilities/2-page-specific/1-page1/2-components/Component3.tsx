@@ -19,7 +19,7 @@ const ReactClockComponent = () => {
   */
 
   return (
-    <div className="flex flex-col items-center justify-center py-8">
+    <div className="flex flex-col items-center justify-center">
       <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
         <div className="flex justify-center">
           <div className="bg-white rounded-full p-2 inline-block">
