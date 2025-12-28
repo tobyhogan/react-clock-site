@@ -36,7 +36,7 @@ const Page1 = () => {
               type="checkbox"
               checked={showAnalogClock}
               onChange={(e) => setShowAnalogClock(e.target.checked)}
-              className="w-4 h-4 cursor-pointer"
+              className="w-4 h-4 cursor-pointer accent-gray-400"
             />
             <span className="text-sm font-medium dark:text-white">Show Analog Clock</span>
           </label>
@@ -46,7 +46,7 @@ const Page1 = () => {
               type="checkbox"
               checked={showDigitalClock}
               onChange={(e) => setShowDigitalClock(e.target.checked)}
-              className="w-4 h-4 cursor-pointer"
+              className="w-4 h-4 cursor-pointer accent-gray-400"
             />
             <span className="text-sm font-medium dark:text-white">Show Digital Clock</span>
           </label>
