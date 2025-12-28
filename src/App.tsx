@@ -18,7 +18,6 @@ function App() {
       >
         <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900 transition-colors">
           <Header />
-          <main className="container mx-auto px-4 py-8">
             <Routes>
 
               <Route path="/" element={<Navigate to="/page1" replace />} />
@@ -30,7 +29,6 @@ function App() {
               <Route path="/settings" element={<Settings />} />
 
             </Routes>
-          </main>
         </div>
       </Router>
     </ThemeProvider>
