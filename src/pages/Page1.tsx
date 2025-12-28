@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Clock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component1';
 //import AnalogClock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component2';
 import ReactClockComponent from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component3';
@@ -8,13 +8,39 @@ import {
   DEFAULT_ANALOG_CLOCK_SIZE, 
   DEFAULT_DIGITAL_CLOCK_SIZE 
 } from '../config/defaults';
+import { 
+  saveClockSettings, 
+  loadClockSettings 
+} from '../1-components-&-utilities/1-general-structure/1-utilities/localStorage';
 
 
 const Page1 = () => {
-  const [showDigitalClock, setShowDigitalClock] = useState(DEFAULT_SHOW_DIGITAL_CLOCK);
-  const [showAnalogClock, setShowAnalogClock] = useState(DEFAULT_SHOW_ANALOG_CLOCK);
-  const [analogClockSize, setAnalogClockSize] = useState(DEFAULT_ANALOG_CLOCK_SIZE); // Percentage
-  const [digitalClockSize, setDigitalClockSize] = useState(DEFAULT_DIGITAL_CLOCK_SIZE); // Percentage
+  // Initialize state from localStorage or use defaults
+  const initializeSettings = () => {
+    const savedSettings = loadClockSettings();
+    return {
+      showDigitalClock: savedSettings?.showDigitalClock ?? DEFAULT_SHOW_DIGITAL_CLOCK,
+      showAnalogClock: savedSettings?.showAnalogClock ?? DEFAULT_SHOW_ANALOG_CLOCK,
+      analogClockSize: savedSettings?.analogClockSize ?? DEFAULT_ANALOG_CLOCK_SIZE,
+      digitalClockSize: savedSettings?.digitalClockSize ?? DEFAULT_DIGITAL_CLOCK_SIZE,
+    };
+  };
+
+  const settings = initializeSettings();
+  const [showDigitalClock, setShowDigitalClock] = useState(settings.showDigitalClock);
+  const [showAnalogClock, setShowAnalogClock] = useState(settings.showAnalogClock);
+  const [analogClockSize, setAnalogClockSize] = useState(settings.analogClockSize); // Percentage
+  const [digitalClockSize, setDigitalClockSize] = useState(settings.digitalClockSize); // Percentage
+
+  // Save to localStorage whenever settings change
+  useEffect(() => {
+    saveClockSettings({
+      showDigitalClock,
+      showAnalogClock,
+      analogClockSize,
+      digitalClockSize,
+    });
+  }, [showDigitalClock, showAnalogClock, analogClockSize, digitalClockSize]);
 
   return (
     <>
