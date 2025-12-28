@@ -25,23 +25,19 @@ const ReactClockComponent = ({ showClock }: ReactClockComponentProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
-        <div className="flex justify-center">
-          <div className="bg-white rounded-full p-2 inline-block">
-            <div style={{ width: 200, height: 200 }}>
-              {showClock ? (
-                <Clock 
-                  value={value} 
-                  size={200} 
-                  renderNumbers={true}
-                  hourHandWidth={4}
-                  minuteHandWidth={3}
-                  secondHandWidth={3}
-                />
-              ) : (
-                <div style={{ width: 200, height: 200 }} />
-              )}
+        <div className="flex justify-center" style={{ width: 216, height: 216 }}>
+          {showClock && (
+            <div className="bg-white rounded-full p-2 inline-block">
+              <Clock 
+                value={value} 
+                size={200} 
+                renderNumbers={true}
+                hourHandWidth={4}
+                minuteHandWidth={3}
+                secondHandWidth={3}
+              />
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
