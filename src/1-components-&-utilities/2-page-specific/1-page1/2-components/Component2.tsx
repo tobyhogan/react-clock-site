@@ -48,6 +48,28 @@ const AnalogClock = () => {
               );
             })}
 
+            {/* Hour numbers */}
+            {[...Array(12)].map((_, i) => {
+              const hour = i === 0 ? 12 : i;
+              const angle = (i * 30 - 90) * (Math.PI / 180);
+              const x = 100 + 65 * Math.cos(angle);
+              const y = 100 + 65 * Math.sin(angle);
+              return (
+                <text
+                  key={`num-${i}`}
+                  x={x}
+                  y={y}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fontSize="16"
+                  fontWeight="bold"
+                  fill="black"
+                >
+                  {hour}
+                </text>
+              );
+            })}
+
             {/* Hour hand */}
             <line
               x1="100"
