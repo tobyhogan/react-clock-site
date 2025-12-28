@@ -135,6 +135,15 @@ const Page1 = () => {
                   +
                 </button>
               </div>
+              <div className="flex gap-2 mt-1">
+                <button
+                  onClick={() => setAnalogClockSize(210)}
+                  className="flex-1 px-3 md:px-4 py-2 md:py-1 text-sm md:text-base bg-neutral-300 dark:bg-neutral-600 hover:bg-neutral-400 dark:hover:bg-neutral-500 dark:text-white rounded transition-colors touch-manipulation"
+                  title="Set to 2100%"
+                >
+                  210%
+                </button>
+              </div>
             </div>
           </div>
           
