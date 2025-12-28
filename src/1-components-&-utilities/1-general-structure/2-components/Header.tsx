@@ -3,8 +3,7 @@ import { useState } from 'react'
 
 
 const navigationLinks = [
-  { path: '/page1', label: 'Page 1' },
-  { path: '/page2', label: 'Page 2' },
+  { path: '/page1', label: 'Clock' },
   { path: '/settings', label: 'Settings' }
 
 ]
