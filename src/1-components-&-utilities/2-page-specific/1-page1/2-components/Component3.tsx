@@ -18,7 +18,7 @@ const ReactClockComponent = () => {
       <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
         <h2 className="text-lg font-semibold mb-3 dark:text-white text-center">React Clock Package</h2>
         <div className="flex justify-center">
-          <Clock value={value} size={200} />
+          <Clock value={value} size={200} renderNumbers={true} />
         </div>
       </div>
     </div>
