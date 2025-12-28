@@ -2,13 +2,19 @@ import { useState } from 'react';
 import Clock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component1';
 //import AnalogClock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component2';
 import ReactClockComponent from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component3';
+import { 
+  DEFAULT_SHOW_DIGITAL_CLOCK, 
+  DEFAULT_SHOW_ANALOG_CLOCK, 
+  DEFAULT_ANALOG_CLOCK_SIZE, 
+  DEFAULT_DIGITAL_CLOCK_SIZE 
+} from '../config/defaults';
 
 
 const Page1 = () => {
-  const [showDigitalClock, setShowDigitalClock] = useState(true);
-  const [showAnalogClock, setShowAnalogClock] = useState(true);
-  const [analogClockSize, setAnalogClockSize] = useState(100); // Percentage
-  const [digitalClockSize, setDigitalClockSize] = useState(100); // Percentage
+  const [showDigitalClock, setShowDigitalClock] = useState(DEFAULT_SHOW_DIGITAL_CLOCK);
+  const [showAnalogClock, setShowAnalogClock] = useState(DEFAULT_SHOW_ANALOG_CLOCK);
+  const [analogClockSize, setAnalogClockSize] = useState(DEFAULT_ANALOG_CLOCK_SIZE); // Percentage
+  const [digitalClockSize, setDigitalClockSize] = useState(DEFAULT_DIGITAL_CLOCK_SIZE); // Percentage
 
   return (
     <>
@@ -98,7 +104,7 @@ const Page1 = () => {
                   −
                 </button>
                 <button
-                  onClick={() => setAnalogClockSize(100)}
+                  onClick={() => setAnalogClockSize(DEFAULT_ANALOG_CLOCK_SIZE)}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Reset to default"
                 >
@@ -137,7 +143,7 @@ const Page1 = () => {
                   −
                 </button>
                 <button
-                  onClick={() => setDigitalClockSize(100)}
+                  onClick={() => setDigitalClockSize(DEFAULT_DIGITAL_CLOCK_SIZE)}
                   className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
                   title="Reset to default"
                 >

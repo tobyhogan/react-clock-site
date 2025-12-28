@@ -14,13 +14,16 @@ export const DEFAULT_JSON_EXPANDED: boolean = true;
 export const DEFAULT_FOLDERS_EXPANDED: boolean = true;
 
 
+// Clock defaults
+export const DEFAULT_SHOW_DIGITAL_CLOCK: boolean = true;
+
+export const DEFAULT_SHOW_ANALOG_CLOCK: boolean = true;
+
+export const DEFAULT_ANALOG_CLOCK_SIZE: number = 100; // Percentage
+
+export const DEFAULT_DIGITAL_CLOCK_SIZE: number = 100; // Percentage
 
 
 
-
-
-// export const DEFAULT_STRING_EXAMPLE: string = 'string1';
-
-// export const DEFAULT_NUMBER_EXAMPLE: number = 0.01;
 
 
