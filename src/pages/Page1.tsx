@@ -33,8 +33,12 @@ const Page1 = () => {
         <div className="
 
           flex flex-col gap-3
-          [&_input[type='checkbox']]:accent-gray-400 [&_input[type='checkbox']]:w-4
-          [&_input[type='checkbox']]:h-4 [&_input[type='checkbox']]:cursor-pointer
+          [&_input[type='checkbox']]:accent-gray-400
+          [&_input[type='checkbox']:hover]:accent-gray-400
+          [&_input[type='checkbox']]:w-4
+          [&_input[type='checkbox']]:h-4
+          [&_input[type='checkbox']]:cursor-pointer
+          [&_input[type='checkbox']]:![color:accent-gray-400]
 
         ">
 
