@@ -7,6 +7,8 @@ import ReactClockComponent from '../1-components-&-utilities/2-page-specific/1-p
 const Page1 = () => {
   const [showDigitalClock, setShowDigitalClock] = useState(true);
   const [showAnalogClock, setShowAnalogClock] = useState(true);
+  const [analogClockSize, setAnalogClockSize] = useState(200);
+  const [digitalClockSize, setDigitalClockSize] = useState(7); // Text size in rem units
 
   return (
     <>
@@ -60,11 +62,11 @@ const Page1 = () => {
 
       {/* Center Content - Clocks */}
       <div className="flex-col mx-8">
-        <ReactClockComponent showClock={showAnalogClock} />
+        <ReactClockComponent showClock={showAnalogClock} size={analogClockSize} />
 
         <div className='mt-12' ></div>
 
-        <Clock showClock={showDigitalClock} />
+        <Clock showClock={showDigitalClock} textSize={digitalClockSize} />
       </div>
 
       {/* Right Panel - Checkboxes */}
@@ -72,25 +74,85 @@ const Page1 = () => {
 
         <h3 className="text-lg font-semibold mb-4 dark:text-white">Controls</h3>
         
-        <div className="custom-checkbox flex flex-col gap-3">
+        <div className="custom-checkbox flex flex-col gap-4">
 
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={showAnalogClock}
-              onChange={(e) => setShowAnalogClock(e.target.checked)}
-            />
-            <span className="text-sm font-medium dark:text-white">Show Analog Clock</span>
-          </label>
+          {/* Analog Clock Controls */}
+          <div className="flex flex-col gap-2">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={showAnalogClock}
+                onChange={(e) => setShowAnalogClock(e.target.checked)}
+              />
+              <span className="text-sm font-medium dark:text-white">Show Analog Clock</span>
+            </label>
+            
+            <div className="ml-6 flex flex-col gap-1">
+              <span className="text-xs text-neutral-600 dark:text-neutral-400">Size: {analogClockSize}px</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setAnalogClockSize(prev => Math.max(100, prev - 20))}
+                  className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
+                  title="Decrease size"
+                >
+                  −
+                </button>
+                <button
+                  onClick={() => setAnalogClockSize(200)}
+                  className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
+                  title="Reset to default"
+                >
+                  Reset
+                </button>
+                <button
+                  onClick={() => setAnalogClockSize(prev => Math.min(400, prev + 20))}
+                  className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
+                  title="Increase size"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
           
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={showDigitalClock}
-              onChange={(e) => setShowDigitalClock(e.target.checked)}
-            />
-            <span className="text-sm font-medium dark:text-white">Show Digital Clock</span>
-          </label>
+          {/* Digital Clock Controls */}
+          <div className="flex flex-col gap-2">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={showDigitalClock}
+                onChange={(e) => setShowDigitalClock(e.target.checked)}
+              />
+              <span className="text-sm font-medium dark:text-white">Show Digital Clock</span>
+            </label>
+            
+            <div className="ml-6 flex flex-col gap-1">
+              <span className="text-xs text-neutral-600 dark:text-neutral-400">Size: {digitalClockSize}</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setDigitalClockSize(prev => Math.max(3, prev - 1))}
+                  className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
+                  title="Decrease size"
+                >
+                  −
+                </button>
+                <button
+                  onClick={() => setDigitalClockSize(7)}
+                  className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
+                  title="Reset to default"
+                >
+                  Reset
+                </button>
+                <button
+                  onClick={() => setDigitalClockSize(prev => Math.min(12, prev + 1))}
+                  className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 dark:text-white rounded transition-colors"
+                  title="Increase size"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

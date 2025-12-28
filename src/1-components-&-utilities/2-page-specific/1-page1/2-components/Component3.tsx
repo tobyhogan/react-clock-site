@@ -4,9 +4,10 @@ import 'react-clock/dist/Clock.css';
 
 interface ReactClockComponentProps {
   showClock: boolean;
+  size?: number;
 }
 
-const ReactClockComponent = ({ showClock }: ReactClockComponentProps) => {
+const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps) => {
   const [value, setValue] = useState(new Date());
 
   useEffect(() => {
@@ -25,12 +26,12 @@ const ReactClockComponent = ({ showClock }: ReactClockComponentProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
-        <div className="flex justify-center" style={{ width: 216, height: 216 }}>
+        <div className="flex justify-center" style={{ width: size + 16, height: size + 16 }}>
           {showClock && (
             <div className="bg-white rounded-full p-2 inline-block">
               <Clock 
                 value={value} 
-                size={200} 
+                size={size} 
                 renderNumbers={true}
                 hourHandWidth={4}
                 minuteHandWidth={3}

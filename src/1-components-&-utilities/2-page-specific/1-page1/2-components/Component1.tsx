@@ -64,9 +64,10 @@ const timezones: Timezone[] = [
 
 interface ClockProps {
   showClock: boolean;
+  textSize?: number;
 }
 
-const Clock = ({ showClock }: ClockProps) => {
+const Clock = ({ showClock, textSize = 7 }: ClockProps) => {
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
   const [selectedServer, setSelectedServer] = useState<TimeServer>(timeServers[0]);
   const [selectedTimezone, setSelectedTimezone] = useState<Timezone>(timezones[0]);
@@ -155,7 +156,7 @@ const Clock = ({ showClock }: ClockProps) => {
                 {loading && <span className="ml-2">(Loading...)</span>}
               </p>
 
-              <div className="text-center text-7xl font-medium dark:text-white tabular-nums">
+              <div className="text-center font-medium dark:text-white tabular-nums" style={{ fontSize: `${textSize}rem` }}>
                 {displayTime}
               </div>
 
