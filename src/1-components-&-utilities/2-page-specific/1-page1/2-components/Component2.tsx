@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Page1 = () => {
+const AnalogClock = () => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -21,14 +21,9 @@ const Page1 = () => {
   const hoursAngle = ((hours % 12 + minutes / 60) / 12) * 360;
 
   return (
-    <div className="p-8">
-      <p className="text-[22px] dark:text-white mb-8">Page 1 - Time Displays</p>
-
-      <div className="space-y-12">
-
-        {/* 2. Analog Clock */}
-        <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
-          <h2 className="text-lg font-semibold mb-3 dark:text-white">Analog Clock</h2>
+    <div className="flex flex-col items-center justify-center py-8">
+      <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
+        <h2 className="text-lg font-semibold mb-3 dark:text-white text-center">Analog Clock</h2>
           <svg width="200" height="200" viewBox="0 0 200 200" className="mx-auto">
             {/* Clock face */}
             <circle cx="100" cy="100" r="95" fill="white" stroke="black" strokeWidth="2" />
@@ -90,14 +85,8 @@ const Page1 = () => {
             <circle cx="100" cy="100" r="5" fill="black" />
           </svg>
         </div>
-
-
-
-      </div>
-
-
     </div>
   );
 };
 
-export default Page1;
+export default AnalogClock;
