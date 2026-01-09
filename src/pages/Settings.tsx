@@ -1,5 +1,5 @@
 import { useTheme } from '../contexts/ThemeContext'
-import { useDocumentTitle } from '../../x-more/x-utilities/hooks/useDocumentTitle'
+import { useDocumentTitle } from '../../z-planning-tools/x-more/x-utilities/hooks/useDocumentTitle'
 
 const Settings = () => {
   useDocumentTitle('Settings')
