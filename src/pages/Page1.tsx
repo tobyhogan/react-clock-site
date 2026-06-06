@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import Clock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component1';
+
+import Clock from 'react-clock/src/Clock.js';
 //import AnalogClock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component2';
-import ReactClockComponent from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component3';
+import ReactClockComponent from '../components/area-2/2-components/Component3';
+
 import { 
   DEFAULT_SHOW_DIGITAL_CLOCK, 
   DEFAULT_SHOW_ANALOG_CLOCK, 
   DEFAULT_ANALOG_CLOCK_SIZE, 
   DEFAULT_DIGITAL_CLOCK_SIZE 
 } from '../config/defaults';
-import { 
-  saveClockSettings, 
-  loadClockSettings 
-} from '../1-components-&-utilities/1-general-structure/1-utilities/localStorage';
+
+import { saveClockSettings, loadClockSettings } from '../utilities/localStorage';
 
 
 const Page1 = () => {
