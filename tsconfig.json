@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "1-file-tools/hold/1-hold-2/Component1.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
