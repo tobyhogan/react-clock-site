@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import Clock from '../../1-file-tools/hold/1-hold-2/Component1.js';
+import Clock from '../components/area-2/DigitalClock.tsx';
 
-import ReactClockComponent from '../components/area-2/Component3.js';
+import ReactClockComponent from '../components/area-2/Component3.tsx';
 
 import { 
   DEFAULT_SHOW_DIGITAL_CLOCK, 
