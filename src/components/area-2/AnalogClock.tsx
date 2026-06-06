@@ -37,7 +37,9 @@ const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps
   
 
   return (
-    <div className="flex flex-col items-center justify-center w-full">
+
+    <div className="flex flex-col items-center justify-center w-full border-2 border-neutral-600 rounded-lg">
+
       <div className="bg-neutral-100 dark:bg-neutral-800 p-4 md:p-6 rounded-lg max-w-full">
         <div className="flex justify-center items-center" style={{ maxWidth: '100%' }}>
           {showClock && (
@@ -51,11 +53,9 @@ const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps
                 secondHandWidth={3}
               />
             </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  
+
+  )}</div></div></div>);
 };
 
 export default ReactClockComponent;

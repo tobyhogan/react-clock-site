@@ -96,8 +96,9 @@ const Clock = ({ showClock, textSize = 7 }: ClockProps) => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-6 md:gap-8 w-full px-4">
-      {/* Raised Clock Widget */}
-      <div className="bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-2xl p-6 md:p-12 w-full max-w-[500px] pt-8 md:pt-12 pb-4">
+
+      <div className="bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-xl
+        p-6 md:p-12 w-full max-w-[500px] pt-8 md:pt-12 pb-4">
 
         <div className="text-center" style={{ minHeight: '150px' }}>
           {showClock && (
