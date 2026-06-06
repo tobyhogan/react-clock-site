@@ -1,2 +1,11 @@
-A clock, time-displaying site made with React/Typescript.
+A clock site made with React/Typescript.
+
+
+
+Features:
+
+  - Analog and digital clocks.
+  - Ability to change the size of different clocks.
+
+  - 
 
