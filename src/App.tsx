@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider } from './contexts/ThemeContext'
 import Header from './components/area-1/Header.tsx'
 import Page1 from './pages/Page1'
-import Page2 from '../1-file-tools/hold/1-hold-2/Page2.tsx'
+import Page2 from './pages/Page2'
 import Settings from './pages/Settings'
 
 function App() {

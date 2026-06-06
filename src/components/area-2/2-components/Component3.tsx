@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Clock from 'react-clock';
 
+import 'react-clock/dist/Clock.css';
+
 interface ReactClockComponentProps {
   showClock: boolean;
   size?: number;
@@ -30,7 +32,10 @@ const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  /*
+  <h2 className="text-lg font-semibold mb-3 dark:text-white text-center">React Clock Package</h2>
 
+  */
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
@@ -55,21 +60,3 @@ const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps
 };
 
 export default ReactClockComponent;
-
-
-
-
-/*
-
-
-  <h2 className="text-lg font-semibold mb-3 dark:text-white text-center">React Clock Package</h2>
-
-*/
-
-/*
-
-
-import 'react-clock/dist/Clock.css';
-
-
-*/
