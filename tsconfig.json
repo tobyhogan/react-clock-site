@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "1-file-tools/hold/1-hold-2/Component1.tsx", "1-file-tools/hold/2-components", "1-file-tools/hold/area-3"],
+  "include": ["src", "1-file-tools/hold/1-hold-3/Component1.tsx", "1-file-tools/hold/1-hold-2/2-compo1-file-tools/hold/1-hold-3/area-3ld/area-3", "1-file-tools/hold/1-AnalogClock.tsx", "1-file-tools/hold/Page2.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
