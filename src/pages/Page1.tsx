@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import Clock from 'react-clock/src/Clock.js';
+import Clock from '../components/area-2/2-components/Clock';
 
 import ReactClockComponent from '../components/area-2/2-components/Component3';
 
