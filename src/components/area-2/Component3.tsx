@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Clock from 'react-clock';
 
+// if you remove the line below, the styling for the clock breaks
+
 import 'react-clock/dist/Clock.css';
 
 interface ReactClockComponentProps {
