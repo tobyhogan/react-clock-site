@@ -1,2 +1,2 @@
-A clock, time-displaying site made with React/Typescript
+A clock, time-displaying site made with React/Typescript.
 
