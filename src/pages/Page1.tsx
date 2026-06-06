@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import Clock from 'react-clock/src/Clock.js';
-//import AnalogClock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component2';
+
 import ReactClockComponent from '../components/area-2/2-components/Component3';
 
 import { 
@@ -230,3 +230,11 @@ const Page1 = () => {
 };
 
 export default Page1;
+
+
+
+/*
+
+//import AnalogClock from '../1-components-&-utilities/2-page-specific/1-page1/2-components/Component2';
+
+*/
