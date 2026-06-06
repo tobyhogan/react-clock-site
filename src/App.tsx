@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
-import Header from './components/area-1/Header.tsx'
+import Header from './components-1/Header.tsx'
 import Page1 from './pages/Page1'
 import Page2 from '../1-file-tools/hold/Page2.tsx'
 import Settings from './pages/Settings'

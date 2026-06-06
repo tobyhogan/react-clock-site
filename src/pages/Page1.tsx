@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import Clock from '../components/area-2/DigitalClock.tsx';
-import ReactClockComponent from '../components/area-2/AnalogClock.tsx';
+import Clock from '../components-2/2-DigitalClock.tsx';
+import ReactClockComponent from '../components-2/1-AnalogClock.tsx';
 
-import { 
-  DEFAULT_SHOW_DIGITAL_CLOCK, 
-  DEFAULT_SHOW_ANALOG_CLOCK, 
-  DEFAULT_ANALOG_CLOCK_SIZE, 
-  DEFAULT_DIGITAL_CLOCK_SIZE 
+import { DEFAULT_SHOW_DIGITAL_CLOCK, DEFAULT_SHOW_ANALOG_CLOCK, DEFAULT_ANALOG_CLOCK_SIZE, DEFAULT_DIGITAL_CLOCK_SIZE 
 } from '../config/defaults';
 
 import { saveClockSettings, loadClockSettings } from '../utilities/localStorage';

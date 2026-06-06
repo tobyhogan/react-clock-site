@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+
 interface TimeServer { name: string; displayName: string; endpoint: string; description: string; }
 
 interface Timezone { name: string; displayName: string; timezone: string; utcOffset: string; }
@@ -132,8 +133,7 @@ const Clock = ({ showClock, textSize = 7 }: ClockProps) => {
         </div>
       </div>
 
-      {/* Controls Section */}
-      <div className="flex flex-col items-center gap-4 md:gap-6 w-full max-w-[500px] px-4">
+            <div className="flex flex-col items-center gap-4 md:gap-6 w-full max-w-[500px] px-4">
         {/* Timezone Dropdown */}
         <div className="flex flex-col items-center gap-2 w-full">
           <label htmlFor="timezone-select" className="text-sm md:text-base font-medium dark:text-white">
@@ -186,6 +186,8 @@ const Clock = ({ showClock, textSize = 7 }: ClockProps) => {
           </p>
         </div>
       </div>
+
+   
     </div>
   );
 };
