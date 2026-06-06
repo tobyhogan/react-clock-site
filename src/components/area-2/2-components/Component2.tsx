@@ -16,6 +16,7 @@ const AnalogClock = () => {
   const seconds = time.getSeconds();
 
   // Calculate angles for analog clock
+  
   const secondsAngle = (seconds / 60) * 360;
   const minutesAngle = ((minutes + seconds / 60) / 60) * 360;
   const hoursAngle = ((hours % 12 + minutes / 60) / 12) * 360;
@@ -29,81 +30,38 @@ const AnalogClock = () => {
             <circle cx="100" cy="100" r="95" fill="white" stroke="black" strokeWidth="2" />
             
             {/* Hour markers */}
+
             {[...Array(12)].map((_, i) => {
               const angle = (i * 30 - 90) * (Math.PI / 180);
               const x1 = 100 + 85 * Math.cos(angle);
               const y1 = 100 + 85 * Math.sin(angle);
               const x2 = 100 + 75 * Math.cos(angle);
               const y2 = 100 + 75 * Math.sin(angle);
-              return (
-                <line
-                  key={i}
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke="black"
-                  strokeWidth="2"
-                />
-              );
+              return ( <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="black" strokeWidth="2" /> );
             })}
 
-            {/* Hour numbers */}
             {[...Array(12)].map((_, i) => {
               const hour = i === 0 ? 12 : i;
               const angle = (i * 30 - 90) * (Math.PI / 180);
               const x = 100 + 65 * Math.cos(angle);
               const y = 100 + 65 * Math.sin(angle);
               return (
-                <text
-                  key={`num-${i}`}
-                  x={x}
-                  y={y}
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="16"
-                  fontWeight="bold"
-                  fill="black"
-                >
-                  {hour}
-                </text>
+                <text key={`num-${i}`} x={x} y={y} textAnchor="middle" dominantBaseline="middle" fontSize="16" fontWeight="bold" fill="black"
+                > {hour}</text>
               );
             })}
 
-            {/* Hour hand */}
-            <line
-              x1="100"
-              y1="100"
-              x2={100 + 40 * Math.sin((hoursAngle * Math.PI) / 180)}
-              y2={100 - 40 * Math.cos((hoursAngle * Math.PI) / 180)}
-              stroke="black"
-              strokeWidth="6"
-              strokeLinecap="round"
+            <line x1="100" y1="100" x2={100 + 40 * Math.sin((hoursAngle * Math.PI) / 180)} y2={100 - 40 * Math.cos((hoursAngle * Math.PI) / 180)}
+              stroke="black" strokeWidth="6" strokeLinecap="round"
             />
 
-            {/* Minute hand */}
-            <line
-              x1="100"
-              y1="100"
-              x2={100 + 60 * Math.sin((minutesAngle * Math.PI) / 180)}
-              y2={100 - 60 * Math.cos((minutesAngle * Math.PI) / 180)}
-              stroke="black"
-              strokeWidth="4"
-              strokeLinecap="round"
+            <line x1="100" y1="100" x2={100 + 60 * Math.sin((minutesAngle * Math.PI) / 180)} y2={100 - 60 * Math.cos((minutesAngle * Math.PI) / 180)}
+              stroke="black" strokeWidth="4" strokeLinecap="round"
             />
 
-            {/* Second hand */}
-            <line
-              x1="100"
-              y1="100"
-              x2={100 + 70 * Math.sin((secondsAngle * Math.PI) / 180)}
-              y2={100 - 70 * Math.cos((secondsAngle * Math.PI) / 180)}
-              stroke="red"
-              strokeWidth="2"
-              strokeLinecap="round"
+            <line x1="100" y1="100" x2={100 + 70 * Math.sin((secondsAngle * Math.PI) / 180)} y2={100 - 70 * Math.cos((secondsAngle * Math.PI) / 180)}
+              stroke="red" strokeWidth="2" strokeLinecap="round"
             />
-
-            {/* Center dot */}
             <circle cx="100" cy="100" r="5" fill="black" />
           </svg>
         </div>
