@@ -1,0 +1,7 @@
+
+
+
+- # Versions:
+
+
+  - version 1.7.2 => refactored the project, made Page1.tsx more minimal and just serving as a hub for the imports
