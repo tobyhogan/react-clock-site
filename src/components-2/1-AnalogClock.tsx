@@ -3,7 +3,7 @@ import Clock from 'react-clock';
 
 // if you remove the line below, the styling for the clock breaks
 
-import 'react-clock/dist/Clock.css';
+import "../Clock.css"
 
 interface ReactClockComponentProps {
   showClock: boolean;
@@ -42,17 +42,17 @@ const ReactClockComponent = ({ showClock, size = 200 }: ReactClockComponentProps
 
       <div className="bg-neutral-100 dark:bg-neutral-800 p-4 md:p-6 rounded-lg max-w-full border-2 border-neutral-600"> 
         
-          {showClock && (
-            <div className="bg-white rounded-full p-2 inline-flex items-center justify-center" style={{ maxWidth: '100%' }}>
-              <Clock 
-                value={value} 
-                size={getResponsiveSize()} 
-                renderNumbers={true}
-                hourHandWidth={4}
-                minuteHandWidth={3}
-                secondHandWidth={3}
-              />
-            </div>
+        {showClock && (
+          <div className="bg-white rounded-full p-2 inline-flex items-center justify-center" style={{ maxWidth: '100%' }}>
+            <Clock 
+              value={value} 
+              size={getResponsiveSize()} 
+              renderNumbers={true}
+              hourHandWidth={4}
+              minuteHandWidth={3}
+              secondHandWidth={3}
+            />
+          </div>
   
 
   )}</div></div>);
