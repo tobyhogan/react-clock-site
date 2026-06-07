@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider } from './contexts/ThemeContext'
 import Header from './components-1/Header.tsx'
 import Page1 from './pages/Page1'
-import Page2 from '../1-file-tools/hold/Page2.tsx'
+//import Page2 from '../1-file-tools/hold/Page2.tsx'
 import Settings from './pages/Settings'
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
               <Route path="/" element={<Navigate to="/page1" replace />} />
               
               <Route path="/page1" element={<Page1 />} />
-              <Route path="/page2" element={<Page2 />} />
+
 
               <Route path="/settings" element={<Settings />} />
 
@@ -43,6 +43,8 @@ export default App
 
 
 /*
+
+              <Route path="/page2" element={<Page2 />} />
 
 <Route path="/upload" element={<UploadDataPage />} />
 <Route path="/view-data" element={<DataDisplayingPage />} />
