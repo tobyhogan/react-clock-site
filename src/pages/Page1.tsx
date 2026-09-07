@@ -43,10 +43,12 @@ const Page1 = () => {
 
         {/* Center column: clocks + timezone selector */}
         <div className="flex flex-col items-center gap-8 md:gap-12 w-full lg:w-auto">
+
           <div className="w-full flex justify-center overflow-x-auto">
             <ReactClockComponent showClock={showAnalogClock} size={analogClockSize * 2} />
           </div>
-          <div className="w-full flex justify-center">
+
+          <div className="w-full flex justify-center mx-[60px]">
             <Clock
               showClock={showDigitalClock}
               textSize={digitalClockSize * 0.07}
@@ -54,6 +56,7 @@ const Page1 = () => {
               selectedServer={selectedServer}
             />
           </div>
+
           <TimezoneSelector
             selectedTimezone={selectedTimezone}
             setSelectedTimezone={setSelectedTimezone}
