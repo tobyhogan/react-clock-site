@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import type { TimeServer, Timezone } from '../config/clockData';
 
-interface ClockProps { showClock: boolean; textSize?: number; selectedTimezone: Timezone; selectedServer: TimeServer;
-}
+
+interface ClockProps { showClock: boolean; textSize?: number; selectedTimezone: Timezone; selectedServer: TimeServer; }
+
 
 const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: ClockProps) => {
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
