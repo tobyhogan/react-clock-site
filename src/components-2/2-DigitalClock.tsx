@@ -20,8 +20,7 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
       }
       
       if (selectedServer.endpoint === 'google' || selectedServerdpoint === 'cloudflare') {
-        // For NTP servers, use local time
-        // (NTP protocol requires UDP which isn't available in browsers)
+
         setServerTime(new Date()); setError(null); return;
       }
 
@@ -44,13 +43,11 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
     return () => clearInterval(interval);
   }, [selectedServer]);
 
-  // Update display time every second
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
 
-    return () => clearInterval(interval);
+  useEffect(() => {
+    const interval = setInterval(() => { setCurrentTime(new Date()); }, 1000);
+    return () => clearInterval(interval); 
+
   }, []);
 
   const formatTime = (date: Date, timezone: string) => {
@@ -63,10 +60,11 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
   return (
     <div className="flex flex-col items-center justify-center gap-6 md:gap-8 w-full px-4">
 
-      <div className="bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-xl
-        p-6 md:p-12 w-full max-w-[500px] pt-8 md:pt-12 pb-4">
+      <div className="
+        bg-white dark:bg-neutral-800 border-2 border-neutral-600 rounded-xl md:px-12 md:pt-8 md:pb-8 w-full max-w-[500px] pb-4"
+      >
 
-        <div className="text-center" style={{ minHeight: '150px' }}>
+        <div className="text-center">
           {showClock && (
             <>
               <h2 className="text-2xl md:text-3xl font-semibold mb-2 dark:text-white"> {selectedTimezone.displayName} </h2>
@@ -99,3 +97,16 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
 };
 
 export default Clock; 
+
+
+
+
+{/*
+
+lines 26 & 27:
+
+        // For NTP servers, use local time
+        // (NTP protocol requires UDP which isn't available in browsers)
+
+
+*/}
