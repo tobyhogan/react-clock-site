@@ -20,7 +20,7 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
 
       }
       
-      if (selectedServer.endpoint === 'google' || selectedServerdpoint === 'cloudflare') {
+      if (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') {
 
         setServerTime(new Date()); setError(null); return;
       }
@@ -45,10 +45,7 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
   }, [selectedServer]);
 
 
-  useEffect(() => {
-    const interval = setInterval(() => { setCurrentTime(new Date()); }, 1000);
-    return () => clearInterval(interval); 
-
+  useEffect(() => { const interval = setInterval(() => { setCurrentTime(new Date()); }, 1000); return () => clearInterval(interval); 
   }, []);
 
   const formatTime = (date: Date, timezone: string) => {
