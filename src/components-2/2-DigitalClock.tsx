@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { TimeServer, Timezone } from '../config/clockData';
 
-interface ClockProps {
-  showClock: boolean;
-  textSize?: number;
-  selectedTimezone: Timezone;
-  selectedServer: TimeServer;
+interface ClockProps { showClock: boolean; textSize?: number; selectedTimezone: Timezone; selectedServer: TimeServer;
 }
 
 const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: ClockProps) => {
@@ -19,21 +15,17 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
     const fetchServerTime = async () => {
       if (selectedServer.endpoint === 'browser') {
         // For browser time, don't set serverTime so it uses currentTime which updates every second
-        setServerTime(null);
-        setError(null);
-        return;
+        setServerTime(null); setError(null); return;
+
       }
       
-      if (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') {
+      if (selectedServer.endpoint === 'google' || selectedServerdpoint === 'cloudflare') {
         // For NTP servers, use local time
         // (NTP protocol requires UDP which isn't available in browsers)
-        setServerTime(new Date());
-        setError(null);
-        return;
+        setServerTime(new Date()); setError(null); return;
       }
 
-      setLoading(true);
-      setError(null);
+      setLoading(true); setError(null);
       
       try {
         const response = await fetch(selectedServer.endpoint);
@@ -42,12 +34,8 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
         const data = await response.json();
         const fetchedTime = new Date(data.datetime || data.utc_datetime);
         setServerTime(fetchedTime);
-      } catch (err) {
-        setError('Failed to fetch time from server');
-        setServerTime(new Date()); // Fallback to local time
-      } finally {
-        setLoading(false);
-      }
+      } catch (err) { setError('Failed to fetch time from server'); setServerTime(new Date()); // Fallback to local time
+      } finally { setLoading(false); }
     };
 
     fetchServerTime();
@@ -66,13 +54,7 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
   }, []);
 
   const formatTime = (date: Date, timezone: string) => {
-    const formatter = new Intl.DateTimeFormat('en-GB', {
-      timeZone: timezone,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false,
-    });
+    const formatter = new Intl.DateTimeFormat('en-GB', { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
     return formatter.format(date);
   };
 
@@ -87,9 +69,7 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
         <div className="text-center" style={{ minHeight: '150px' }}>
           {showClock && (
             <>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-2 dark:text-white">
-                {selectedTimezone.displayName}
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2 dark:text-white"> {selectedTimezone.displayName} </h2>
               
               <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-4 md:mb-6">
                 {selectedTimezone.utcOffset}
@@ -101,9 +81,7 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
               </div>
 
               {error && (
-                <p className="text-xs md:text-sm text-red-500 mt-3 md:mt-4">
-                  {error} - Showing local time
-                </p>
+                <p className="text-xs md:text-sm text-red-500 mt-3 md:mt-4"> {error} - Showing local time </p>
               )}
 
               {selectedServer.endpoint !== 'browser' && (selectedServer.endpoint === 'google' || selectedServer.endpoint === 'cloudflare') && (
@@ -120,5 +98,4 @@ const Clock = ({ showClock, textSize = 7, selectedTimezone, selectedServer }: Cl
   );
 };
 
-export default Clock;
-
+export default Clock; 
